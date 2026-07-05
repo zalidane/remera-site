@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Remera Privacy Policy — how we handle your information when you use the Remera app.">
+  <title>Privacy Policy — Remera</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <p class="logo"><a href="index.html">Remera</a></p>
+      <p class="tagline">Eat smarter. Simply.</p>
+    </div>
+  </header>
+
+  <main class="legal-page">
+    <article class="container privacy-content">
+      <h1>Privacy Policy</h1>
+      <p class="legal-meta"><strong>Effective date:</strong> July 1, 2026 &middot; <strong>Last updated:</strong> July 1, 2026</p>
+
+      <p>
+        This Privacy Policy describes how <strong>Remera</strong> (“<strong>Remera</strong>,” “<strong>we</strong>,” “<strong>us</strong>,” or “<strong>our</strong>”) handles information when you use the Remera mobile application for iOS and Android (the “<strong>App</strong>”) and the related nutrition analysis service operated at our API endpoint (the “<strong>Service</strong>”).
+      </p>
+
+      <p class="legal-contact">
+        <strong>Developer / Data Controller:</strong> Antonio Delgado<br>
+        <strong>Contact:</strong> <a href="mailto:remera.support@gmail.com">remera.support@gmail.com</a><br>
+        <strong>Website:</strong> <a href="https://zalidane.github.io/remera/">https://zalidane.github.io/remera/</a>
+      </p>
+
+      <section>
+        <h2>Summary</h2>
+        <p>Remera helps you rate meals and scan restaurant menus using AI-powered nutrition guidance. Key points:</p>
+        <ul>
+          <li><strong>No account required.</strong> We do not ask you to create an account, sign in, or provide an email address to use the App.</li>
+          <li><strong>Profile data stays on your device</strong> unless you use a feature that needs personalization (meal rating or menu analysis).</li>
+          <li><strong>We do not sell your data</strong> and we do not use third-party advertising or analytics SDKs.</li>
+          <li><strong>Camera images are processed on your device.</strong> Only extracted menu text—not photos—is sent to our servers when you analyze a menu.</li>
+          <li><strong>Subscriptions are handled by Apple or Google.</strong> We do not receive or store your payment card details.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>1. Information We Collect</h2>
+
+        <h3>1.1 Information you provide in the App (stored on your device)</h3>
+        <p>When you complete onboarding or update your profile, the App stores the following <strong>locally on your device</strong>:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Name (optional)</td><td>Personalization (e.g., greetings)</td></tr>
+              <tr><td>Date of birth / age</td><td>Calorie and nutrition calculations</td></tr>
+              <tr><td>Gender</td><td>Calorie and nutrition calculations</td></tr>
+              <tr><td>Height and weight</td><td>Calorie and nutrition calculations</td></tr>
+              <tr><td>Activity level</td><td>Calorie and nutrition calculations</td></tr>
+              <tr><td>Health goal (e.g., lose fat, maintain, gain muscle)</td><td>Personalized meal and menu guidance</td></tr>
+              <tr><td>Computed nutrition targets (RMR, daily calorie target)</td><td>Display and API personalization</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>This profile data is saved using on-device storage (iOS: UserDefaults; Android: DataStore). <strong>We do not maintain a user database or persist your profile on our servers.</strong></p>
+        <p>You can delete your profile at any time from the Profile screen. Deleting your profile removes locally stored profile data from your device.</p>
+
+        <h3>1.2 Information sent when you use App features</h3>
+        <p>When you use certain features, the App sends data over the internet to our Service so we can generate results for you:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Data sent</th>
+                <th scope="col">Recipient</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Meal rating</strong></td>
+                <td>Meal description you enter; relevant fields from your profile (name, age, gender, height, weight, activity level, goal, calorie targets)</td>
+                <td>Our API server, which forwards content to <strong>OpenAI</strong> for AI analysis</td>
+              </tr>
+              <tr>
+                <td><strong>Menu scanning</strong></td>
+                <td>Text extracted from a menu photo via on-device OCR; relevant fields from your profile</td>
+                <td>Our API server, which forwards content to <strong>OpenAI</strong> for AI analysis</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Menu photos are not uploaded.</strong> The App uses on-device optical character recognition (Apple Vision on iOS; ML Kit on Android) to extract text from images captured with your camera. Only the extracted text is transmitted for analysis.</p>
+        <p>We do not use these requests to build a persistent user profile on our servers. Our API is <strong>stateless</strong>: it processes each request and returns a result without storing your meal descriptions, menu text, or profile in a database.</p>
+
+        <h3>1.3 Device and usage information (stored on your device)</h3>
+        <p>To enforce free-tier limits and manage premium access, the App stores <strong>device-local</strong> information:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">Storage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Daily meal analysis count</td>
+                <td>Free-tier usage limits (resets daily)</td>
+                <td>iOS: device Keychain; Android: encrypted local preferences</td>
+              </tr>
+              <tr>
+                <td>Subscription / premium status</td>
+                <td>Unlock premium features</td>
+                <td>Verified locally via <strong>Apple App Store</strong> (iOS) or <strong>Google Play</strong> (Android)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>This usage data is tied to your device, not to a Remera account. If you delete your profile, your daily usage count may remain on the device by design so free-tier limits cannot be reset by deleting and re-creating a profile.</p>
+        <p>We do not collect advertising identifiers (IDFA/GAID) and do not use cross-app tracking for advertising.</p>
+
+        <h3>1.4 Information collected automatically by our servers</h3>
+        <p>When the App contacts our API, our hosting provider and server software may automatically receive standard technical data, such as:</p>
+        <ul>
+          <li>IP address</li>
+          <li>Date and time of the request</li>
+          <li>Request path and HTTP method</li>
+          <li>User-Agent string (the App sends <code>Remera/1.0</code>)</li>
+          <li>Error and performance logs</li>
+        </ul>
+        <p>In production, our API may temporarily log a short preview of menu text submitted for analysis (for debugging and operations). We do not intentionally log full meal descriptions or profile fields in routine operation, though error logs may occasionally include request-related metadata.</p>
+        <p>Our API is hosted on <strong>Railway</strong>. Server access logs are retained only as long as needed for security, troubleshooting, and legal compliance, then deleted or aggregated.</p>
+
+        <h3>1.5 Information handled by Apple and Google (subscriptions)</h3>
+        <p>If you purchase Remera Premium:</p>
+        <ul>
+          <li><strong>Apple (iOS):</strong> Payment, subscription management, and purchase verification are handled entirely by Apple through StoreKit. We receive only the information needed to confirm whether you have an active entitlement (e.g., product ID, transaction status, expiration). We do <strong>not</strong> receive your Apple ID, payment card number, or billing address.</li>
+          <li><strong>Google (Android):</strong> When Google Play Billing is enabled, the same applies: Google processes payments; we receive only subscription status needed to unlock features.</li>
+        </ul>
+        <p>Manage or cancel subscriptions through your Apple ID or Google Play account settings.</p>
+      </section>
+
+      <section>
+        <h2>2. How We Use Information</h2>
+        <p>We use the information described above to:</p>
+        <ul>
+          <li>Calculate nutrition targets from your profile</li>
+          <li>Provide personalized meal ratings and menu recommendations</li>
+          <li>Enforce free and premium feature access</li>
+          <li>Operate, secure, and improve the Service</li>
+          <li>Comply with law and respond to lawful requests</li>
+        </ul>
+        <p>We do <strong>not</strong> use your information for:</p>
+        <ul>
+          <li>Selling or renting personal data to third parties</li>
+          <li>Targeted advertising or cross-app profiling</li>
+          <li>Building marketing lists</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Legal Bases for Processing (EEA/UK users)</h2>
+        <p>If you are in the European Economic Area or United Kingdom, we process personal data on the following bases:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Processing</th>
+                <th scope="col">Legal basis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Providing meal and menu analysis at your request</td><td>Performance of a contract / steps at your request</td></tr>
+              <tr><td>Storing profile and usage data on your device</td><td>Legitimate interests (app functionality) and your choices in the App</td></tr>
+              <tr><td>Server processing and AI analysis</td><td>Performance of a contract</td></tr>
+              <tr><td>Security logging and fraud prevention</td><td>Legitimate interests</td></tr>
+              <tr><td>Compliance with legal obligations</td><td>Legal obligation</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Where we rely on legitimate interests, you may object as described in Section 8.</p>
+      </section>
+
+      <section>
+        <h2>4. Third-Party Service Providers</h2>
+        <p>We use the following categories of service providers who process data on our behalf:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Provider</th>
+                <th scope="col">Role</th>
+                <th scope="col">Data involved</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>OpenAI</strong></td><td>AI meal and menu analysis</td><td>Meal text, menu text, and profile fields included in API requests</td></tr>
+              <tr><td><strong>Railway</strong></td><td>API hosting and infrastructure</td><td>Request metadata, transient request payloads in memory during processing</td></tr>
+              <tr><td><strong>Apple App Store</strong></td><td>In-app purchases and subscription management (iOS)</td><td>Purchase and entitlement data handled under Apple’s policies</td></tr>
+              <tr><td><strong>Google Play</strong></td><td>In-app purchases and subscription management (Android, when enabled)</td><td>Purchase and entitlement data handled under Google’s policies</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>These providers are permitted to process data only to perform services for us and are subject to their own privacy policies:</p>
+        <ul>
+          <li>OpenAI: <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">openai.com/policies/privacy-policy</a></li>
+          <li>Apple: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">apple.com/legal/privacy</a></li>
+          <li>Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a></li>
+        </ul>
+        <p>We do not authorize OpenAI or our hosting providers to use your content to contact you or to sell your personal information.</p>
+      </section>
+
+      <section>
+        <h2>5. Data Retention</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Retention</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Profile on your device</td><td>Until you delete it in the App or uninstall the App</td></tr>
+              <tr><td>Daily usage count on your device</td><td>Until overwritten by daily reset, app data clear, or uninstall (may persist across profile deletion)</td></tr>
+              <tr><td>API request payloads on our servers</td><td>Not stored in a database; processed in memory for the duration of the request</td></tr>
+              <tr><td>Server logs</td><td>Limited retention for security and operations (typically days to weeks unless required longer for incident investigation)</td></tr>
+              <tr><td>Subscription records</td><td>Managed by Apple/Google according to their retention policies; we retain only current entitlement status on device</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>6. Data Sharing and Sale</h2>
+        <p>We do <strong>not</strong> sell, rent, or share your personal information for cross-context behavioral advertising.</p>
+        <p>We may disclose information only:</p>
+        <ul>
+          <li>To service providers listed in Section 4</li>
+          <li>If required by law, regulation, legal process, or governmental request</li>
+          <li>To protect the rights, safety, and security of Remera, our users, or the public</li>
+          <li>In connection with a merger, acquisition, or sale of assets (you would be notified as required by law)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>7. Security</h2>
+        <p>We use reasonable technical and organizational measures to protect data in transit (HTTPS/TLS) and on our servers. Profile and usage data on your device benefit from platform security (including encrypted storage for usage limits on Android and Keychain on iOS).</p>
+        <p>No method of transmission or storage is 100% secure. You use the App at your own risk.</p>
+      </section>
+
+      <section>
+        <h2>8. Your Rights and Choices</h2>
+        <p>Depending on where you live, you may have rights to:</p>
+        <ul>
+          <li><strong>Access</strong> personal data we process</li>
+          <li><strong>Correct</strong> inaccurate data (update your profile in the App)</li>
+          <li><strong>Delete</strong> data (use “Delete Profile &amp; Data” in the App; uninstall the App to remove local data)</li>
+          <li><strong>Object</strong> to or <strong>restrict</strong> certain processing</li>
+          <li><strong>Data portability</strong> (export is not currently built into the App; contact us for assistance)</li>
+          <li><strong>Withdraw consent</strong> where processing is consent-based</li>
+          <li><strong>Opt out of sale/sharing</strong> (we do not sell personal information)</li>
+        </ul>
+        <p><strong>California residents (CCPA/CPRA):</strong> We do not sell or share personal information for cross-context behavioral advertising. You may contact us to exercise your rights.</p>
+        <p><strong>EEA/UK residents (GDPR):</strong> You may lodge a complaint with your local supervisory authority. Contact us first so we can try to resolve your concern.</p>
+        <p>To exercise rights regarding data processed on our servers, email <a href="mailto:remera.support@gmail.com">remera.support@gmail.com</a>. We may need to verify your request. Because we do not operate user accounts, we may ask for information that helps us locate relevant server logs (e.g., approximate date/time of a request).</p>
+      </section>
+
+      <section>
+        <h2>9. Children’s Privacy</h2>
+        <p>Remera is not directed to children under 13 (or the minimum age required in your country). We do not knowingly collect personal information from children. If you believe a child has provided us information, contact us and we will take appropriate steps to delete it.</p>
+      </section>
+
+      <section>
+        <h2>10. International Data Transfers</h2>
+        <p>Our API and subprocessors (including OpenAI and Railway) may process data in the United States and other countries. If you use the App from outside the United States, your information may be transferred to jurisdictions with different data protection laws. Where required, we rely on appropriate safeguards such as Standard Contractual Clauses or equivalent mechanisms offered by our providers.</p>
+      </section>
+
+      <section>
+        <h2>11. Health and Medical Disclaimer</h2>
+        <p>Remera provides general nutrition information and meal suggestions for educational purposes. It is <strong>not</strong> a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before making significant dietary changes, especially if you have a medical condition.</p>
+      </section>
+
+      <section>
+        <h2>12. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will post the revised policy with a new “Last updated” date and, where required, provide additional notice in the App. Continued use of the App after changes become effective constitutes acceptance of the updated policy.</p>
+      </section>
+
+      <section>
+        <h2>13. Contact Us</h2>
+        <p>If you have questions about this Privacy Policy or our data practices:</p>
+        <p>
+          <strong>Antonio Delgado</strong><br>
+          Email: <a href="mailto:remera.support@gmail.com">remera.support@gmail.com</a>
+        </p>
+      </section>
+
+      <p class="back-link"><a href="index.html">&larr; Back to Remera Support</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="privacy-policy.html">Privacy Policy</a></p>
+      <p>Nutrition guidance is for informational purposes only and is not medical advice.</p>
+      <p class="copyright">&copy; 2026 &mdash; Antonio Delgado</p>
+    </div>
+  </footer>
+</body>
+</html>

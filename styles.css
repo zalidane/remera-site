@@ -60,6 +60,15 @@ a:hover {
   letter-spacing: -0.02em;
 }
 
+.logo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: var(--accent);
+}
+
 .tagline {
   margin: 0.35rem 0 0;
   color: var(--text-muted);
@@ -177,6 +186,114 @@ main {
 
 .copyright {
   margin-top: 0.75rem !important;
+}
+
+.site-footer a {
+  font-weight: 500;
+}
+
+/* Privacy Policy & legal pages */
+
+.legal-page {
+  padding: 2rem 0 1rem;
+}
+
+.privacy-content h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.legal-meta {
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.legal-contact {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+}
+
+.privacy-content section {
+  margin-bottom: 2rem;
+}
+
+.privacy-content h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.privacy-content h3 {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.privacy-content p,
+.privacy-content ul {
+  margin: 0 0 1rem;
+}
+
+.privacy-content ul {
+  padding-left: 1.25rem;
+}
+
+.privacy-content li + li {
+  margin-top: 0.35rem;
+}
+
+.privacy-content code {
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  background: var(--highlight-bg);
+  border-radius: 4px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.privacy-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.privacy-content th,
+.privacy-content td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.privacy-content th {
+  background: var(--highlight-bg);
+  font-weight: 600;
+}
+
+.privacy-content tr:last-child th,
+.privacy-content tr:last-child td {
+  border-bottom: none;
+}
+
+.back-link {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
 }
 
 @media (min-width: 640px) {
