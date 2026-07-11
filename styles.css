@@ -184,6 +184,20 @@ main {
   color: var(--text-muted);
 }
 
+
+.tm {
+  font-size: 0.55em;
+  font-weight: 600;
+  vertical-align: super;
+  letter-spacing: 0;
+  margin-left: 0.08em;
+}
+
+.trademark {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
 .copyright {
   margin-top: 0.75rem !important;
 }
