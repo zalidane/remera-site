@@ -18,27 +18,28 @@
   <main class="legal-page">
     <article class="container privacy-content">
       <h1>Privacy Policy</h1>
-      <p class="legal-meta"><strong>Effective date:</strong> July 1, 2026 &middot; <strong>Last updated:</strong> July 1, 2026</p>
+      <p class="legal-meta"><strong>Effective date:</strong> July 1, 2026 &middot; <strong>Last updated:</strong> October 28, 2026</p>
 
       <p>
         This Privacy Policy describes how <strong>Remera™</strong> (“<strong>Remera</strong>,” “<strong>we</strong>,” “<strong>us</strong>,” or “<strong>our</strong>”) handles information when you use the Remera mobile application for iOS and Android (the “<strong>App</strong>”) and the related nutrition analysis service operated at our API endpoint (the “<strong>Service</strong>”).
       </p>
 
       <p class="legal-contact">
-        <strong>Developer / Data Controller:</strong> Antonio Delgado<br>
+        <strong>Developer / Data Controller:</strong> Antonio Lionel Delgado (individual developer)<br>
         <strong>Contact:</strong> <a href="mailto:remera.support@gmail.com">remera.support@gmail.com</a><br>
         <strong>Website:</strong> <a href="https://zalidane.github.io/remera-site/">https://zalidane.github.io/remera-site/</a>
       </p>
+      <p><strong>Trademark:</strong> Remera™ is a trademark of Antonio Lionel Delgado.</p>
 
       <section>
         <h2>Summary</h2>
         <p>Remera helps you rate meals and scan restaurant menus using AI-powered nutrition guidance. Key points:</p>
         <ul>
           <li><strong>No account required.</strong> We do not ask you to create an account, sign in, or provide an email address to use the App.</li>
-          <li><strong>Profile data stays on your device</strong> unless you use a feature that needs personalization (meal rating or menu analysis).</li>
+          <li><strong>Profile data stays on your device</strong> unless you use meal rating or menu analysis, which send health metrics (not your name) for objective AI analysis.</li>
           <li><strong>We do not sell your data</strong> and we do not use third-party advertising or analytics SDKs.</li>
-          <li><strong>Camera images are processed on your device.</strong> Only extracted menu text—not photos—is sent to our servers when you analyze a menu.</li>
-          <li><strong>Subscriptions are handled by Apple or Google.</strong> We do not receive or store your payment card details.</li>
+          <li><strong>Menu photos are not uploaded.</strong> On iOS, the camera image is read on your device. Android does not capture a menu photo.</li>
+          <li><strong>Payments stay with Apple.</strong> We do not receive or store your payment card details. The iOS app sends a StoreKit 2 purchase proof so our API can ask Apple whether Premium is active.</li>
         </ul>
       </section>
 
@@ -56,18 +57,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Name (optional)</td><td>Personalization (e.g., greetings)</td></tr>
+              <tr><td>Name</td><td>In-app greetings only (never sent to our servers)</td></tr>
               <tr><td>Date of birth / age</td><td>Calorie and nutrition calculations</td></tr>
               <tr><td>Gender</td><td>Calorie and nutrition calculations</td></tr>
               <tr><td>Height and weight</td><td>Calorie and nutrition calculations</td></tr>
               <tr><td>Activity level</td><td>Calorie and nutrition calculations</td></tr>
-              <tr><td>Health goal (e.g., lose fat, maintain, gain muscle)</td><td>Personalized meal and menu guidance</td></tr>
-              <tr><td>Computed nutrition targets (RMR, daily calorie target)</td><td>Display and API personalization</td></tr>
+              <tr><td>Health goal (e.g., lose fat, maintain, gain muscle)</td><td>Objective meal and menu analysis</td></tr>
+              <tr><td>Computed nutrition targets (RMR, daily calorie target)</td><td>Display and objective meal/menu analysis</td></tr>
             </tbody>
           </table>
         </div>
         <p>This profile data is saved using on-device storage (iOS: UserDefaults; Android: DataStore). <strong>We do not maintain a user database or persist your profile on our servers.</strong></p>
-        <p>You can delete your profile at any time from the Profile screen. Deleting your profile removes locally stored profile data from your device.</p>
+        <p>You can delete your profile at any time from the Profile screen. Deleting your profile removes locally stored profile data from your device. It does not reset the on-device usage count or the device identifier described in Section 1.3.</p>
 
         <h3>1.2 Information sent when you use App features</h3>
         <p>When you use certain features, the App sends data over the internet to our Service so we can generate results for you:</p>
@@ -83,22 +84,23 @@
             <tbody>
               <tr>
                 <td><strong>Meal rating</strong></td>
-                <td>Meal description you enter; relevant fields from your profile (name, age, gender, height, weight, activity level, goal, calorie targets)</td>
+                <td>Meal description you enter; relevant fields from your profile (age, gender, height, weight, activity level, goal, calorie targets). Your name is not sent.</td>
                 <td>Our API server, which forwards content to <strong>OpenAI</strong> for AI analysis</td>
               </tr>
               <tr>
-                <td><strong>Menu scanning</strong></td>
-                <td>Text extracted from a menu photo via on-device OCR; relevant fields from your profile</td>
-                <td>Our API server, which forwards content to <strong>OpenAI</strong> for AI analysis</td>
+                <td><strong>Menu scanning (iOS)</strong></td>
+                <td>Text extracted on device from a menu photo; the same profile fields, without your name</td>
+                <td>Our API server, which forwards that text to <strong>OpenAI</strong> for AI analysis</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p><strong>Menu photos are not uploaded.</strong> The App uses on-device optical character recognition (Apple Vision on iOS; ML Kit on Android) to extract text from images captured with your camera. Only the extracted text is transmitted for analysis.</p>
-        <p>We do not use these requests to build a persistent user profile on our servers. Our API is <strong>stateless</strong>: it processes each request and returns a result without storing your meal descriptions, menu text, or profile in a database.</p>
+        <p><strong>Menu photos are not uploaded.</strong> On iOS, the App uses Apple’s Vision framework on the device to read text from the camera image. Only the extracted text is transmitted. The Android menu scanner does not capture a photo, does not run on-device OCR, and does not upload an image. Android meal rating can still send the meal description and profile fields above.</p>
+        <p>We do not store meal descriptions, menu text, photos, or profile fields in a database. Those requests are processed in memory and the result is returned. The Service does keep the usage counter and Premium entitlement cache described in Sections 1.3 and 1.5.</p>
+        <p>Both apps omit your name from the API payload. If a request still includes a name, the prompts do not use it.</p>
 
-        <h3>1.3 Device and usage information (stored on your device)</h3>
-        <p>To enforce free-tier limits and manage premium access, the App stores <strong>device-local</strong> information:</p>
+        <h3>1.3 Device identifier and usage limits</h3>
+        <p>Free and Premium analyses share one daily cap. The App keeps a copy of the remaining count on the device so the screen can show it, and the API keeps the counter that actually enforces the cap.</p>
         <div class="table-wrap">
           <table>
             <thead>
@@ -110,40 +112,52 @@
             </thead>
             <tbody>
               <tr>
-                <td>Daily meal analysis count</td>
-                <td>Free-tier usage limits (resets daily)</td>
-                <td>iOS: device Keychain; Android: encrypted local preferences</td>
+                <td>Daily analysis count on the device</td>
+                <td>Show how many analyses are left. Resets at midnight UTC.</td>
+                <td>iOS: device Keychain. Android: encrypted local preferences.</td>
               </tr>
               <tr>
-                <td>Subscription / premium status</td>
-                <td>Unlock premium features</td>
-                <td>Verified locally via <strong>Apple App Store</strong> (iOS) or <strong>Google Play</strong> (Android)</td>
+                <td>Device identifier</td>
+                <td>Key the server usage counter. A random id created on the device, not an advertising id (not IDFA or GAID).</td>
+                <td>iOS: UserDefaults. Android: app preferences. Sent on AI requests as the <code>X-Device-Id</code> header.</td>
+              </tr>
+              <tr>
+                <td>Server daily usage counter</td>
+                <td>Enforce the daily cap and the short cooldown between analyses. Not used for advertising or to build a profile.</td>
+                <td>Redis key <code>remera:usage:</code> plus that device id. The value is the UTC day, the count, and the time of the last allowed request.</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p>This usage data is tied to your device, not to a Remera account. If you delete your profile, your daily usage count may remain on the device by design so free-tier limits cannot be reset by deleting and re-creating a profile.</p>
-        <p>We do not collect advertising identifiers (IDFA/GAID) and do not use cross-app tracking for advertising.</p>
+        <p>The server count resets when the UTC date changes. After each allowed analysis, that Redis key is set to expire <strong>one hour after the next UTC midnight</strong> (and at least one hour after the request). If a request has no device id, the API uses the request IP as the key instead.</p>
+        <p>Deleting your profile does not clear the device identifier or the on-device count, so the daily limit cannot be reset by deleting the profile. Deleting the App removes the on-device id and count. The server key expires on its own as described above.</p>
+        <p>We do not collect advertising identifiers and we do not use cross-app tracking for advertising.</p>
+        <p>If Redis is not configured, the API keeps the same counter in process memory until the process restarts. The deployed Service uses Redis.</p>
 
         <h3>1.4 Information collected automatically by our servers</h3>
-        <p>When the App contacts our API, our hosting provider and server software may automatically receive standard technical data, such as:</p>
+        <p>When the App contacts our API, standard technical data is logged:</p>
         <ul>
-          <li>IP address</li>
-          <li>Date and time of the request</li>
-          <li>Request path and HTTP method</li>
+          <li>IP address, date and time, HTTP method, path, status code, and response size (HTTP access log)</li>
           <li>User-Agent string (the App sends <code>Remera/1.0</code>)</li>
-          <li>Error and performance logs</li>
+          <li>A short usage line for each meal-rating or menu-analysis request: the tier that was applied, the daily limit, how many analyses remain, whether the app claimed Premium, whether a purchase proof was presented and which kind (none, signed transaction, transaction id, or both), the verification result, the App Store environment when known, the <strong>last four digits</strong> of Apple’s original transaction id when known, and a short reason code</li>
         </ul>
-        <p>In production, our API may temporarily log a short preview of menu text submitted for analysis (for debugging and operations). We do not intentionally log full meal descriptions or profile fields in routine operation, though error logs may occasionally include request-related metadata.</p>
-        <p>Our API is hosted on <strong>Railway</strong>. Server access logs are retained only as long as needed for security, troubleshooting, and legal compliance, then deleted or aggregated.</p>
+        <p>Menu analysis also logs the <strong>character count and line count</strong> of the menu text. When it finishes, it logs those counts again, how many dishes were returned (best, recommended, and avoid), and how long the handler took.</p>
+        <p><strong>We do not log</strong> the meal description, the menu text, profile fields, photos, dish names, reasons, scores, or the model’s response. A failed model call logs the error name and a status or code, not the model output. A failed subscription check logs a short reason and at most the last four digits of a transaction id. Long tokens are redacted. Server errors log the HTTP status, error name, and a short message; validation failures do not include the model output.</p>
+        <p>The signed App Store transaction and the full transaction id are not written to these logs.</p>
+        <p>Our API is hosted on <strong>Railway</strong>. Server logs are retained only as long as needed for security, troubleshooting, and legal compliance, then deleted or aggregated.</p>
 
-        <h3>1.5 Information handled by Apple and Google (subscriptions)</h3>
-        <p>If you purchase Remera Premium:</p>
+        <h3>1.5 Subscriptions</h3>
+        <p>If you purchase Remera Premium on iOS:</p>
         <ul>
-          <li><strong>Apple (iOS):</strong> Payment, subscription management, and purchase verification are handled entirely by Apple through StoreKit. We receive only the information needed to confirm whether you have an active entitlement (e.g., product ID, transaction status, expiration). We do <strong>not</strong> receive your Apple ID, payment card number, or billing address.</li>
-          <li><strong>Google (Android):</strong> When Google Play Billing is enabled, the same applies: Google processes payments; we receive only subscription status needed to unlock features.</li>
+          <li><strong>Apple</strong> processes payment, subscription management, and billing. We do <strong>not</strong> receive your Apple ID, payment card number, or billing address.</li>
+          <li>The iOS app sends a StoreKit 2 proof on AI requests: the signed transaction (<code>X-App-Store-Signed-Transaction</code>) and/or Apple’s original transaction id (<code>X-App-Store-Original-Transaction-Id</code>).</li>
+          <li>Our API verifies that proof with Apple’s App Store Server API. The client’s own Premium header is not trusted.</li>
+          <li>The API caches the result in Redis under <code>remera:appstore:tx:</code> plus Apple’s original transaction id. The cached fields are the tier (Premium or free), a reason code, the expiry time, the original transaction id, and the App Store environment (Sandbox or Production). The signed transaction itself is not stored. A second key may be a SHA-256 hash of the signed transaction, not the transaction text.</li>
+          <li>A Premium result is kept until the expiry Apple reported, and <strong>never longer than 24 hours</strong>. An inactive or failed check is kept for <strong>5 minutes</strong>. If Redis is not configured, the same cache stays in process memory until restart.</li>
         </ul>
-        <p>Manage or cancel subscriptions through your Apple ID or Google Play account settings.</p>
+        <p>The iOS app also reads StoreKit entitlements on the device to decide what to show. That on-device read does not replace the server check.</p>
+        <p><strong>Android:</strong> Google Play Billing is not connected. The Android app does not send a Google purchase token, and the API does not verify Play purchases. Menu scanning stays unavailable on Android. We do not receive Google payment card details.</p>
+        <p>Manage or cancel an iOS subscription in your Apple ID settings.</p>
       </section>
 
       <section>
@@ -151,8 +165,8 @@
         <p>We use the information described above to:</p>
         <ul>
           <li>Calculate nutrition targets from your profile</li>
-          <li>Provide personalized meal ratings and menu recommendations</li>
-          <li>Enforce free and premium feature access</li>
+          <li>Provide neutral, objective meal ratings and menu recommendations based on your health metrics</li>
+          <li>Enforce free and Premium limits, and confirm iOS Premium with Apple</li>
           <li>Operate, secure, and improve the Service</li>
           <li>Comply with law and respond to lawful requests</li>
         </ul>
@@ -177,9 +191,10 @@
             </thead>
             <tbody>
               <tr><td>Providing meal and menu analysis at your request</td><td>Performance of a contract / steps at your request</td></tr>
-              <tr><td>Storing profile and usage data on your device</td><td>Legitimate interests (app functionality) and your choices in the App</td></tr>
+              <tr><td>Storing profile data and a usage display on your device</td><td>Legitimate interests (app functionality) and your choices in the App</td></tr>
+              <tr><td>Server usage counter and Premium entitlement cache</td><td>Performance of a contract and legitimate interests (enforcing limits and confirming the subscription you purchased)</td></tr>
               <tr><td>Server processing and AI analysis</td><td>Performance of a contract</td></tr>
-              <tr><td>Security logging and fraud prevention</td><td>Legitimate interests</td></tr>
+              <tr><td>Security logging</td><td>Legitimate interests</td></tr>
               <tr><td>Compliance with legal obligations</td><td>Legal obligation</td></tr>
             </tbody>
           </table>
@@ -200,10 +215,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td><strong>OpenAI</strong></td><td>AI meal and menu analysis</td><td>Meal text, menu text, and profile fields included in API requests</td></tr>
-              <tr><td><strong>Railway</strong></td><td>API hosting and infrastructure</td><td>Request metadata, transient request payloads in memory during processing</td></tr>
-              <tr><td><strong>Apple App Store</strong></td><td>In-app purchases and subscription management (iOS)</td><td>Purchase and entitlement data handled under Apple’s policies</td></tr>
-              <tr><td><strong>Google Play</strong></td><td>In-app purchases and subscription management (Android, when enabled)</td><td>Purchase and entitlement data handled under Google’s policies</td></tr>
+              <tr><td><strong>OpenAI</strong></td><td>AI meal and menu analysis</td><td>Meal text, menu text, and health metrics included in API requests (name is not sent)</td></tr>
+              <tr><td><strong>Railway</strong></td><td>API hosting, and Redis for the usage counter and entitlement cache</td><td>Request metadata, the usage counter, the entitlement cache, and transient request payloads in memory during processing</td></tr>
+              <tr><td><strong>Apple</strong></td><td>In-app purchases, and the App Store Server API we call to verify iOS Premium</td><td>Purchase and entitlement data handled under Apple’s policies. We send Apple the original transaction id and use the signed transaction to verify it.</td></tr>
+              <tr><td><strong>Google Play</strong></td><td>Not used for billing today. Play Billing is not connected.</td><td>The Android app does not send a purchase token.</td></tr>
             </tbody>
           </table>
         </div>
@@ -228,10 +243,13 @@
             </thead>
             <tbody>
               <tr><td>Profile on your device</td><td>Until you delete it in the App or uninstall the App</td></tr>
-              <tr><td>Daily usage count on your device</td><td>Until overwritten by daily reset, app data clear, or uninstall (may persist across profile deletion)</td></tr>
-              <tr><td>API request payloads on our servers</td><td>Not stored in a database; processed in memory for the duration of the request</td></tr>
-              <tr><td>Server logs</td><td>Limited retention for security and operations (typically days to weeks unless required longer for incident investigation)</td></tr>
-              <tr><td>Subscription records</td><td>Managed by Apple/Google according to their retention policies; we retain only current entitlement status on device</td></tr>
+              <tr><td>Daily usage count on your device</td><td>Until the UTC day resets, you clear app data, or you uninstall. It can remain after profile deletion.</td></tr>
+              <tr><td>Device identifier on your device</td><td>Until you clear app data or uninstall the App. Profile deletion does not remove it.</td></tr>
+              <tr><td>Server usage counter</td><td>The count resets at midnight UTC. The Redis key then expires one hour after the next UTC midnight following the last allowed analysis, and at least one hour after that analysis.</td></tr>
+              <tr><td>Premium entitlement cache</td><td>Premium: until the expiry Apple reported, capped at 24 hours. Inactive or failed checks: 5 minutes. The signed transaction is not stored.</td></tr>
+              <tr><td>Meal text, menu text, photos, and profile fields on our servers</td><td>Not stored in a database. Processed in memory for the request.</td></tr>
+              <tr><td>Server logs</td><td>Limited retention for security and operations (typically days to weeks unless an incident investigation requires longer)</td></tr>
+              <tr><td>Apple subscription records</td><td>Kept by Apple under Apple’s policies. We do not store your payment card.</td></tr>
             </tbody>
           </table>
         </div>
@@ -261,7 +279,7 @@
         <ul>
           <li><strong>Access</strong> personal data we process</li>
           <li><strong>Correct</strong> inaccurate data (update your profile in the App)</li>
-          <li><strong>Delete</strong> data (use “Delete Profile &amp; Data” in the App; uninstall the App to remove local data)</li>
+          <li><strong>Delete</strong> data (use “Delete Profile &amp; Data” in the App; uninstall the App to remove local data, including the device identifier)</li>
           <li><strong>Object</strong> to or <strong>restrict</strong> certain processing</li>
           <li><strong>Data portability</strong> (export is not currently built into the App; contact us for assistance)</li>
           <li><strong>Withdraw consent</strong> where processing is consent-based</li>
@@ -269,7 +287,7 @@
         </ul>
         <p><strong>California residents (CCPA/CPRA):</strong> We do not sell or share personal information for cross-context behavioral advertising. You may contact us to exercise your rights.</p>
         <p><strong>EEA/UK residents (GDPR):</strong> You may lodge a complaint with your local supervisory authority. Contact us first so we can try to resolve your concern.</p>
-        <p>To exercise rights regarding data processed on our servers, email <a href="mailto:remera.support@gmail.com">remera.support@gmail.com</a>. We may need to verify your request. Because we do not operate user accounts, we may ask for information that helps us locate relevant server logs (e.g., approximate date/time of a request).</p>
+        <p>To exercise rights regarding data processed on our servers, email <a href="mailto:remera.support@gmail.com">remera.support@gmail.com</a>. We may need to verify your request. Because we do not operate user accounts, we may ask for information that helps us locate relevant server logs (for example, an approximate date and time).</p>
       </section>
 
       <section>
@@ -296,10 +314,94 @@
         <h2>13. Contact Us</h2>
         <p>If you have questions about this Privacy Policy or our data practices:</p>
         <p>
-          <strong>Antonio Delgado</strong><br>
+          <strong>Antonio Lionel Delgado</strong><br>
+          Individual developer of Remera<br>
           Email: <a href="mailto:remera.support@gmail.com">remera.support@gmail.com</a>
         </p>
       </section>
+
+      <section>
+        <h2>Appendix A — App Store &amp; Play Store Data Disclosure Reference</h2>
+        <p>Use this appendix when completing <strong>Apple App Privacy</strong> labels and <strong>Google Play Data Safety</strong> forms. Adjust if your practices change.</p>
+
+        <h3>Data linked to the user (collected / transmitted)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Examples in Remera</th>
+                <th scope="col">Linked to identity?</th>
+                <th scope="col">Used for tracking?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Health &amp; Fitness</strong></td>
+                <td>Age, gender, height, weight, activity level, health goal, calorie targets</td>
+                <td>No Remera account; sent with an analysis request</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><strong>User Content</strong></td>
+                <td>Meal descriptions; menu text from on-device OCR (iOS)</td>
+                <td>Same as above</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><strong>Identifiers</strong></td>
+                <td>Random device id (<code>X-Device-Id</code>) for the usage counter. Apple original transaction id for Premium verification.</td>
+                <td>Not a Remera account. The device id keys the usage counter. The transaction id keys the entitlement cache.</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><strong>Purchases</strong></td>
+                <td>StoreKit 2 signed transaction and original transaction id, sent so the API can verify Premium with Apple. Tier and expiry are cached until expiry, capped at 24 hours.</td>
+                <td>Apple’s transaction id, not a Remera account</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><strong>Diagnostics</strong></td>
+                <td>Server logs described in Section 1.4 (no meal text, menu text, or model response)</td>
+                <td>Not linked to a Remera account</td>
+                <td>No</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Data not collected by Remera</h3>
+        <ul>
+          <li>Email address, phone number, physical address (unless you email support)</li>
+          <li>Contacts</li>
+          <li>Photos (menu images are not uploaded; Android does not capture a menu photo)</li>
+          <li>Precise location</li>
+          <li>Browsing or search history outside the App</li>
+          <li>Advertising data / IDFA / GAID</li>
+          <li>Google Play purchase tokens (Play Billing is not connected)</li>
+          <li>Payment card numbers</li>
+        </ul>
+
+        <h3>Apple App Store — suggested privacy label answers</h3>
+        <ul>
+          <li><strong>Data Used to Track You:</strong> None</li>
+          <li><strong>Data Linked to You:</strong> Health &amp; Fitness (profile fields sent with requests); User Content (meal text and, on iOS, menu text); Identifiers (device id; Apple original transaction id); Purchases (subscription proof and the cached tier and expiry)</li>
+          <li><strong>Data Not Linked to You:</strong> Diagnostics (operational server logs in Section 1.4), if you classify them that way</li>
+          <li><strong>Purposes:</strong> App Functionality</li>
+        </ul>
+
+        <h3>Google Play — suggested Data Safety answers</h3>
+        <ul>
+          <li><strong>Data collected:</strong> Health and fitness info; app activity (meal text you submit); a device id for the usage limit</li>
+          <li><strong>Data not collected by this client:</strong> menu photos; a Play purchase token</li>
+          <li><strong>Data shared:</strong> With service providers (OpenAI for AI processing). The API verifies iOS purchases with Apple; this Android client does not send an Apple or Google purchase proof.</li>
+          <li><strong>Data encrypted in transit:</strong> Yes (HTTPS)</li>
+          <li><strong>Users can request deletion:</strong> Yes (in-app profile deletion, uninstall to remove the device id, and contact for server logs)</li>
+          <li><strong>Committed to Play Families Policy:</strong> Only if targeting children (Remera is not directed to children)</li>
+        </ul>
+      </section>
+
+      <p>This document is provided for informational purposes and does not constitute legal advice.</p>
 
       <p class="back-link"><a href="index.html">&larr; Back to Remera Support</a></p>
     </article>
@@ -309,8 +411,8 @@
     <div class="container">
       <p><a href="privacy-policy.html">Privacy Policy</a></p>
       <p>Nutrition guidance is for informational purposes only and is not medical advice.</p>
-      <p class="trademark">Remera™ is a trademark of Antonio Delgado.</p>
-      <p class="copyright">&copy; 2026 &mdash; Antonio Delgado</p>
+      <p class="trademark">Remera™ is a trademark of Antonio Lionel Delgado.</p>
+      <p class="copyright">&copy; 2026 &mdash; Antonio Lionel Delgado</p>
     </div>
   </footer>
 </body>
